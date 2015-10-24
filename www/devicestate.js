@@ -2,7 +2,7 @@ var DeviceState = function() {
 
 };
 
-DeviceState.prototype.init = function(successFn, failFn) {
+DeviceState.prototype.start = function(successFn, failFn) {
   cordova.exec(successFn, failFn, 'DeviceState', 'start', []);
 };
 
