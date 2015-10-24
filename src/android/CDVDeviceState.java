@@ -10,9 +10,9 @@ import org.json.JSONObject;
  * Created by maning on 15/10/24.
  */
 public class CDVDeviceState extends CordovaPlugin {
-
+    
     private CallbackContext mCallbackContext;
-
+    
     @Override
     public boolean execute(String action, CordovaArgs args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("start")) {
@@ -23,8 +23,8 @@ public class CDVDeviceState extends CordovaPlugin {
         }
         return true;
     }
-
-
+    
+    
     @Override
     public void onResume(boolean multitasking) {
         super.onResume(multitasking);
@@ -39,9 +39,9 @@ public class CDVDeviceState extends CordovaPlugin {
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
+        
     }
-
+    
     @Override
     public void onPause(boolean multitasking) {
         super.onPause(multitasking);
@@ -57,6 +57,6 @@ public class CDVDeviceState extends CordovaPlugin {
             e.printStackTrace();
         }
     }
-
-
+    
+    
 }
