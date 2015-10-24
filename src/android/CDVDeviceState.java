@@ -3,6 +3,7 @@ package cn.jsfund.licaijie.devicestate;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaArgs;
 import org.apache.cordova.CordovaPlugin;
+import org.apache.cordova.PluginResult;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -18,8 +19,8 @@ public class CDVDeviceState extends CordovaPlugin {
         if (action.equals("start")) {
             mCallbackContext = callbackContext;
             PluginResult dataResult = new PluginResult(PluginResult.Status.OK,"start success");
-            　　    dataResult.setKeepCallback(true);//非常重要
-            　　    mCallbackContext.sendPluginResult(dataResult);
+            dataResult.setKeepCallback(true);//非常重要
+            mCallbackContext.sendPluginResult(dataResult);
         }
         return true;
     }
