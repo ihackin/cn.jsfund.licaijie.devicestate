@@ -21,10 +21,12 @@
 
 - (void)start : (CDVInvokedUrlCommand *)command
 {
+    NSLog(@"device state start");
     self.callbackId = command.callbackId;
     NSString * version =[[[NSBundle mainBundle]infoDictionary]objectForKey :@"start success"];
     CDVPluginResult * pluginResult =[CDVPluginResult resultWithStatus : CDVCommandStatus_OK messageAsString : version];
-    [self.commandDelegate sendPluginResult : pluginResult callbackId : callbackId];
+    [pluginResult setKeepCallbackAsBool:YES];
+    [self.commandDelegate sendPluginResult : pluginResult callbackId : self.callbackId];
 }
 
 - (void) applicationDidBecomeActive {
@@ -32,6 +34,7 @@
     
     NSString* result = [NSString stringWithFormat:@"{state:%@}", @"resume"];
     CDVPluginResult * pluginResult =[CDVPluginResult resultWithStatus : CDVCommandStatus_OK messageAsString : result];
+    [pluginResult setKeepCallbackAsBool:YES];
     [self.commandDelegate sendPluginResult : pluginResult callbackId : self.callbackId];
 }
 
@@ -39,6 +42,7 @@
     NSLog(@"trigger applicationDidEnterBackground.");
     NSString* result = [NSString stringWithFormat:@"{state:%@}", @"pause"];
     CDVPluginResult * pluginResult =[CDVPluginResult resultWithStatus : CDVCommandStatus_OK messageAsString : result];
+    [pluginResult setKeepCallbackAsBool:YES];
     [self.commandDelegate sendPluginResult : pluginResult callbackId : self.callbackId];
 }
 
