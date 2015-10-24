@@ -17,6 +17,9 @@ public class CDVDeviceState extends CordovaPlugin {
     public boolean execute(String action, CordovaArgs args, CallbackContext callbackContext) throws JSONException {
         if (action.equals("start")) {
             mCallbackContext = callbackContext;
+            PluginResult dataResult = new PluginResult(PluginResult.Status.OK,"start success");
+            　　    dataResult.setKeepCallback(true);//非常重要
+            　　    mCallbackContext.sendPluginResult(dataResult);
         }
         return true;
     }
@@ -29,7 +32,9 @@ public class CDVDeviceState extends CordovaPlugin {
             JSONObject result = new JSONObject();
             result.put("state", "resume");
             if (mCallbackContext != null) {
-                mCallbackContext.success(result);
+                PluginResult dataResult = new PluginResult(PluginResult.Status.OK, result.toString());
+                dataResult.setKeepCallback(true);//非常重要
+                mCallbackContext.sendPluginResult(dataResult);
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -44,7 +49,9 @@ public class CDVDeviceState extends CordovaPlugin {
             JSONObject result = new JSONObject();
             result.put("state", "pause");
             if (mCallbackContext != null) {
-                mCallbackContext.success(result);
+                PluginResult dataResult = new PluginResult(PluginResult.Status.OK, result.toString());
+                dataResult.setKeepCallback(true);//非常重要
+                mCallbackContext.sendPluginResult(dataResult);
             }
         } catch (JSONException e) {
             e.printStackTrace();
