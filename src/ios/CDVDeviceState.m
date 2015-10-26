@@ -23,8 +23,8 @@
 {
     NSLog(@"device state start");
     self.callbackId = command.callbackId;
-    NSString * version =[[[NSBundle mainBundle]infoDictionary]objectForKey :@"start success"];
-    CDVPluginResult * pluginResult =[CDVPluginResult resultWithStatus : CDVCommandStatus_OK messageAsString : version];
+    NSString* result = [NSString stringWithFormat:@"{state:%@}", @"start"];
+    CDVPluginResult * pluginResult =[CDVPluginResult resultWithStatus : CDVCommandStatus_OK messageAsString : result];
     [pluginResult setKeepCallbackAsBool:YES];
     [self.commandDelegate sendPluginResult : pluginResult callbackId : self.callbackId];
 }
